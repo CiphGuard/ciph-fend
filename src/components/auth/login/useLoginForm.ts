@@ -67,7 +67,7 @@ export default function useLoginForm() {
       .catch((err) => {
         if (
           err.response?.data &&
-          err.response.status === RESPONSE.bad_request
+          (err.response.status === RESPONSE.bad_request || err.response.status === RESPONSE.unauthorized)
         ) {
           form.setError("password", {
             type: "manual",
